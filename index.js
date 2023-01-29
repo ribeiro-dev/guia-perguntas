@@ -7,6 +7,7 @@ app.set("view engine", "ejs") // define o ejs como view engine
 app.get('/:nome/:lang/:level?', (req, res) => {
     let nome = req.params["nome"]
     let lang = req.params["lang"]
+    let level = req.params["level"]
     res.render("index", {
         nome: nome,
         lang: lang,

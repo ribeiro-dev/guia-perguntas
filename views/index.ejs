@@ -13,5 +13,12 @@
 
     <p>Nome: <%= nome %></p>
     <p>Linguagem: <%= lang %></p>
+
+    <!-- condiçao com EJS -->
+    <% if(level) { %>
+        <p>Nível: <%=level%></p>
+    <% } else { %>
+        <p>Nível: ?</p>
+    <% } %>
 </body>
 </html>
