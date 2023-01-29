@@ -5,26 +5,10 @@ app.set("view engine", "ejs") // define o ejs como view engine
 app.use(express.static('public')) // define a pasta de arquivos estáticos
 
 // cria a rota /
-app.get('/:nome/:lang/:level?', (req, res) => {
-    let nome = req.params["nome"]
-    let lang = req.params["lang"]
-    let level = req.params["level"]
-
-    const produtos = [
-        { nome: "Doritos", preco: 3.14 },
-        { nome: "Coca-cola", preco: 5 },
-        { nome: "Leite", preco: 1.45 },
-        { nome: "Carne", preco: 30 },
-        { nome: "RedBull", preco: 8 }
-    ]
+app.get('/', (req, res) => {
 
     // usamos o método render quando temos uma view engine
-    res.render("index", {
-        nome: nome,
-        lang: lang,
-        level: level,
-        produtos: produtos
-    })
+    res.render("index")
 })
 
 app.listen(8080, () => {

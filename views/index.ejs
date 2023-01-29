@@ -8,27 +8,6 @@
     <title>Guia Perguntas</title>
 </head>
 <body>
-    <h1>Hello World</h1>
-    <hr>
-    <h3>Lista de Perguntas</h3>
-
-    <p>Nome: <%= nome %></p>
-    <p>Linguagem: <%= lang %></p>
-
-    <!-- condiçao com EJS -->
-    <% if(level) { %>
-        <p>Nível: <%=level%></p>
-    <% } else { %>
-        <p>Nível: ?</p>
-    <% } %>
-
-    <!-- Loop com EJS -->
-    <% produtos.forEach(p => { %>
-        <h3>Produto: <%=p.nome%></h4>
-        <h4>Preço: <%=p.preco%></p>
-        <br>
-    <% }) %>
-
-    <img src="/img/motogp-logo.png" alt="Logo do MotoGP">
+    
 </body>
 </html>
