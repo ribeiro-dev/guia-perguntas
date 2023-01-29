@@ -20,5 +20,12 @@
     <% } else { %>
         <p>Nível: ?</p>
     <% } %>
+
+    <!-- Loop com EJS -->
+    <% produtos.forEach(p => { %>
+        <h3>Produto: <%=p.nome%></h4>
+        <h4>Preço: <%=p.preco%></p>
+        <br>
+    <% }) %>
 </body>
 </html>
