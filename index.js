@@ -2,6 +2,7 @@ const express = require("express") // importando o módulo
 const app = express() // instaciando o express
 const bodyParser = require("body-parser")
 const connection = require("./database/database")
+const questionModel = require("./database/Question")
 
 // Database
 connection
