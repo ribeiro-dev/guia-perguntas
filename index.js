@@ -2,7 +2,7 @@ const express = require("express") // importando o módulo
 const app = express() // instaciando o express
 const bodyParser = require("body-parser")
 const connection = require("./database/database")
-const questionModel = require("./database/Question")
+const Question = require("./database/Question")
 
 // Database
 connection
@@ -35,7 +35,12 @@ app.post('/salvarpergunta', (req, res) => {
     // o nome é de acordo com o atributo name
     const title = req.body.title
     const description = req.body.description
-    res.send("Formulario recebido! Titulo: " + title + " " + " descricao " + description)
+    Question.create({
+        titulo: title,
+        descricao: description 
+    }).then(() => {
+        res.redirect("/") // redireciona o usuário após criar a pergunta
+    })
 })
 
 app.listen(8080, () => {
