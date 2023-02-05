@@ -1,6 +1,17 @@
 const express = require("express") // importando o módulo
 const app = express() // instaciando o express
 const bodyParser = require("body-parser")
+const connection = require("./database/database")
+
+// Database
+connection
+    .authenticate()
+    .then(() => {
+        console.log("Conexão feita com o banco de dados!")
+    })
+    .catch((msg) => {
+        console.log(msg)
+    })
 
 app.set("view engine", "ejs") // define o ejs como view engine
 app.use(express.static('public')) // define a pasta de arquivos estáticos
