@@ -26,9 +26,9 @@ app.get('/', (req, res) => {
     Question.findAll({ // esse método executa um SELECT * no banco
         raw: true // trás somente os dados (sem mais informações)
     })
-    .then(perguntas => { 
+    .then(questions => { 
         // usamos o método render quando temos uma view engine
-        res.render("index.ejs", { perguntas: perguntas })
+        res.render("index.ejs", { questions: questions })
     })
     
 })
