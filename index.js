@@ -21,10 +21,16 @@ app.use(express.static('public')) // define a pasta de arquivos estáticos
 app.use(bodyParser.urlencoded({ extended: false })) // configura o bodyparser
 app.use(bodyParser.json()) // permite com que seja possivel ler json enviado 
 
-// cria a rota /
+// Rotas
 app.get('/', (req, res) => {
-    // usamos o método render quando temos uma view engine
-    res.render("index.ejs")
+    Question.findAll({ // esse método executa um SELECT * no banco
+        raw: true // trás somente os dados (sem mais informações)
+    })
+    .then(perguntas => { 
+        // usamos o método render quando temos uma view engine
+        res.render("index.ejs", { perguntas: perguntas })
+    })
+    
 })
 
 app.get('/perguntar', (req, res) => {
