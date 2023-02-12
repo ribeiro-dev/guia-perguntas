@@ -1,0 +1,16 @@
+<%- include('partials/header.ejs') %>
+<body>
+    <%- include('partials/navbar.ejs') %>
+
+    <div class="container">
+        <hr>
+        <% if (question) { %>
+            <h1><%= question.titulo %></h1>
+            <p><%= question.descricao %></p>
+
+        <% } else {%>
+            <h1>Ops! Pergunta não encontrada</h1>
+        <% } %>
+    </div>
+</body>
+<%- include('partials/footer.ejs') %>

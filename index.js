@@ -52,6 +52,19 @@ app.post('/salvarpergunta', (req, res) => {
     })
 })
 
+
+app.get('/pergunta/:id', (req, res) => {
+    const id = req.params.id
+    Question.findOne({
+        where: {
+            id: id
+        }
+    })
+    .then(question => {
+            res.render("pergunta.ejs", { question: question })
+    })
+})
+
 app.listen(8080, () => {
     console.log("Servidor iniciado")
 })
