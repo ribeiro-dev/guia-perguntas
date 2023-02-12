@@ -24,7 +24,10 @@ app.use(bodyParser.json()) // permite com que seja possivel ler json enviado
 // Rotas
 app.get('/', (req, res) => {
     Question.findAll({ // esse método executa um SELECT * no banco
-        raw: true // trás somente os dados (sem mais informações)
+        raw: true, // trás somente os dados (sem mais informações)
+        order: [
+            ['id', 'DESC'] // faz um ORDER BY pelo ID
+        ] 
     })
     .then(questions => { 
         // usamos o método render quando temos uma view engine
