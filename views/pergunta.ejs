@@ -11,6 +11,15 @@
         <% } else {%>
             <h1>Ops! Pergunta não encontrada</h1>
         <% } %>
+
+        <form>
+            <h3>Responda:</h3>
+
+            <label for="corpo">Resposta:</label>
+            <textarea class="form-control" name="corpo" placeholder="Digite sua resposta"></textarea>
+            <input type="hidden" name="question" id="questionId" value="<%=question.id%>">
+            <button class="btn btn-primary mt-2" type="submit">Enviar Resposta</button>
+        </form>
     </div>
 </body>
 <%- include('partials/footer.ejs') %>
