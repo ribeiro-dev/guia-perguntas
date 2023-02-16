@@ -22,6 +22,7 @@ app.use(express.static('public')) // define a pasta de arquivos estáticos
 app.use(bodyParser.urlencoded({ extended: false })) // configura o bodyparser
 app.use(bodyParser.json()) // permite com que seja possivel ler json enviado 
 
+
 // Rotas
 app.get('/', (req, res) => {
     Question.findAll({ // esse método executa um SELECT * no banco
@@ -62,7 +63,31 @@ app.get('/pergunta/:id', (req, res) => {
         }
     })
     .then(question => {
-            res.render("pergunta.ejs", { question: question })
+            Answer.findAll({
+                where: { questionId: id },
+                order: [
+                    ['id', 'DESC']
+                ]
+            })
+            .then(answers => {
+                res.render("pergunta.ejs", { 
+                    question: question,
+                    answers: answers
+                })
+            })
+    })
+})
+
+
+app.post("/responder", (req, res) => {
+    const body          = req.body.body
+    const questionId    = req.body.question
+
+    Answer.create({
+        body: body,
+        questionId: questionId
+    }).then(() => {
+        res.redirect("/pergunta/" + questionId)
     })
 })
 
